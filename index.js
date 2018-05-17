@@ -1,7 +1,6 @@
 const botconfig = require("./botconfig.json");
 const color = require("./color.json");
 const Discord = require("discord.js");
-const db = require("quick.db");
 
 const bot = new Discord.Client({disableEveryone: true});
 
@@ -22,19 +21,6 @@ bot.on("guildDelete", guild => {
 bot.user.setActivity(
         `${bot.guilds.size} servers | +help`, {type: "WATCHING"});
 });
-
- db.updateValue(message.author.id + message.guild.id, 1).then(i => {
-     let messages;
-     if (i.value == 25) messages = 25; 
-     else if (i.value == 50) messages = 50;
-     else if (i.value == 100) messages = 100;
-     if (!isNaN(messages)) {
-         db.updateValue(`userLevel_${message.author.id + message.guild.id}`, 1).then(o => {
-            message.channel.send(`You sent ${messages} messages, you leveled up! You are now level ${o.value}`)
-       
-     })
-   }
-})
     
 
 //welcome join
