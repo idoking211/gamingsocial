@@ -216,8 +216,9 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setColor("#268ccf")
     .setThumbnail(bicon)
     .addField("Moderation Commands","+kick (user) (reason) - Kick a User.\n+ban (user) (reason) - Ban a User.\n+report (user) (reason) - report about User.\n+warn (user) (reason) - Warn a User.")
-    .addField("Server Commands","+serverinfo - Server Informations.\n+membercount - Member Count.\n+say (message) - say your message.\n+poll (question) - Poll about Question\n+avatar @user - Avatar of the user.\n+ping - Ping Pong");
-
+    .addField("Server Commands","+serverinfo - Server Informations.\n+membercount - Member Count.\n+say (message) - say your message.\n+poll (question) - Poll about Question\n+avatar @user - Avatar of the user.\n+ping - Ping Pong")
+    .addField("LevelsUp Soon","+mylevel - whats is your level.\n+rankup (user) - Rankup someone.")
+    .addField("Balance Soon","+bal (user).\n+addbal (user) (reason).\n+baltop.");
     return message.author.send(botembed);
   }
   if(cmd === `${prefix}mute`){
