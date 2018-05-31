@@ -217,7 +217,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setColor("#268ccf")
     .setThumbnail(bicon)
     .addField("Moderation Commands","g-kick - (@user) (reason).\ng-report - (@user) reason.\ng-ban - (@user) (reason).\ng-mute - (@user) (reason).)
-    .addField("Server Commands","g-serverinfo - Server Informations.\ng-membercount - Member Count.\ng-say (message) - say your message.\ng-poll (question) - Poll about Question\ng-avatar - avatar image someone.\ng-ping - ping pong
+    .addField("Server Commands","g-serverinfo - Server Informations.\ng-membercount - Member Count.\ng-say (message) - say your message.\ng-poll (question) - Poll about Question\ng-avatar - avatar image someone.\ng-ping - ping pong")
     .addField("Balance Soon","g-bal (user).\ng-addbal (user) (reason).\ng-baltop.");
     return message.author.send(botembed);
   }
