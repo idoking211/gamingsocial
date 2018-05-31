@@ -8,18 +8,18 @@ const swearWords = ["fuck", "shit", "זונה", "חרא"];
 
 bot.on("ready", async () => {
   console.log(`Bot is Online!`);
-bot.user.setActivity(`${bot.guilds.size} servers | +help`, {type: "WATCHING"});
+bot.user.setActivity(`${bot.guilds.size} servers | g-help`, {type: "WATCHING"});
 });
 
 // Updates the bot's status if he joins a server
 bot.on("guildCreate", guild => {
-bot.user.setActivity(`${bot.guilds.size} servers | +help`, {type: "WATCHING"});
+bot.user.setActivity(`${bot.guilds.size} servers | g-help`, {type: "WATCHING"});
 });
 
 /// Updates the bot's status if he leaves a servers
 bot.on("guildDelete", guild => {
 bot.user.setActivity(
-        `${bot.guilds.size} servers | +help`, {type: "WATCHING"});
+        `${bot.guilds.size} servers | g-help`, {type: "WATCHING"});
 });
     
 
@@ -50,7 +50,7 @@ bot.on("message", async message => {
 
     //!kick @user break the rules
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!kUser) return message.channel.send("/kick [user] [reason]");
+    if(!kUser) return message.channel.send("g-kick [user] [reason]");
     let kReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
@@ -80,7 +80,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if(cmd === `${prefix}ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("/ban [user] [reason]");
+    if(!bUser) return message.channel.send("g-ban [user] [reason]");
     let bReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No can do pal!");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
@@ -105,7 +105,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
     //!report @user this is the reason
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return message.channel.send("/report [user] [reason]");
+    if(!rUser) return message.channel.send("g-report [user] [reason]");
     let rreason = args.join(" ").slice(22);
 
     let reportEmbed = new Discord.RichEmbed()
@@ -128,7 +128,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
     //!warn @user this is the reason
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return message.channel.send("/warn [user] [reason]");
+    if(!rUser) return message.channel.send("g-warn [user] [reason]");
     let rreason = args.join(" ").slice(22);
 
     let reportEmbed = new Discord.RichEmbed()
@@ -179,7 +179,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   let question = args.slice(0).join(" ");
 
   if (args.length === 0)
-  return message.reply('Invalid Format: /poll <Question>')
+  return message.reply('Invalid Format: g-poll <Question>')
 
   const embed = new Discord.RichEmbed()
   .setTitle("A Poll Has Been Started!")
@@ -204,7 +204,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     let botembed = new Discord.RichEmbed()
     .setDescription("Creators of the Bot")
     .setColor("#ff9f04")
-    .addField("\nCreators","<@354952398772371458>\n<@311604263379795970>")
+    .addField("\nCreators","<@354952398772371458>")
 
     return message.channel.send(botembed);
 }
@@ -216,10 +216,9 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setDescription("Help Commands")
     .setColor("#268ccf")
     .setThumbnail(bicon)
-    .addField("Moderation Commands","+kick (user) (reason) - Kick a User.\n+ban (user) (reason) - Ban a User.\n+report (user) (reason) - report about User.\n+warn (user) (reason) - Warn a User.")
-    .addField("Server Commands","+serverinfo - Server Informations.\n+membercount - Member Count.\n+say (message) - say your message.\n+poll (question) - Poll about Question\n+avatar @user - Avatar of the user.\n+ping - Ping Pong")
-    .addField("LevelsUp Soon","+mylevel - whats is your level.\n+rankup (user) - Rankup someone.")
-    .addField("Balance Soon","+bal (user).\n+addbal (user) (reason).\n+baltop.");
+    .addField("Moderation Commands","g-kick - (@user) (reason).\ng-report - (@user) reason.\ng-ban - (@user) (reason).\ng-mute - (@user) (reason).)
+    .addField("Server Commands","g-serverinfo - Server Informations.\ng-membercount - Member Count.\ng-say (message) - say your message.\ng-poll (question) - Poll about Question\ng-avatar - avatar image someone.\ng-ping - ping pong
+    .addField("Balance Soon","g-bal (user).\ng-addbal (user) (reason).\ng-baltop.");
     return message.author.send(botembed);
   }
   if(cmd === `${prefix}mute`){
